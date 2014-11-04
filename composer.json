@@ -1,0 +1,25 @@
+{
+    "name": "rde/prototype",
+    "authors": [
+        {
+            "name": "Colin",
+            "email": "colin1124x@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "rde/common": "dev-0.x-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rde\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "prefer-stable": true
+}
