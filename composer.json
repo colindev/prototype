@@ -6,6 +6,7 @@
             "email": "colin1124x@gmail.com"
         }
     ],
+    "license": "MIT",
     "minimum-stability": "dev",
     "require": {
         "rde/common": "dev-0.x-master"
