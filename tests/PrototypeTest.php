@@ -6,15 +6,14 @@ class PrototypeTest extends PHPUnit_Framework_TestCase
     {
         $tester = $this;
 
-        $o = new Rde\Prototype(array(
-                'sayHello' => function($o){
-                    return "Hello";
-                },
-                'sum' => function($o, $a, $b) use($tester) {
-                    $tester->assertTrue(isset($o['sum']), '確認注入程序');
-                    return $a + $b;
-                }
-            ));
+        $o = new Rde\Prototype;
+        $o['sayHello'] = function($o){
+            return "Hello";
+        };
+        $o['sum'] = function($o, $a, $b) use($tester) {
+            $tester->assertTrue(isset($o['sum']), '確認注入程序');
+            return $a + $b;
+        };
 
         $this->assertFalse(method_exists($o, 'sayHello'), '測試method_exists');
         $this->assertTrue(is_callable(array($o, 'sayHelloxx')), '測試is_callable sayHelloxx(不存在)');

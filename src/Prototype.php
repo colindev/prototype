@@ -2,26 +2,19 @@
 
 class Prototype implements \ArrayAccess
 {
-    protected $drivers = array();
+    private $drivers = array();
 
-    public function __construct(array $drivers = array())
-    {
-        foreach ($drivers as $name => $driver) {
-            $this->extend($name, $driver);
-        }
-    }
-
-    public function extend($name, $callable)
+    final public function extend($name, $callable)
     {
         $this->drivers[$name] = $callable;
     }
 
-    public function hasDriver($name)
+    final public function hasDriver($name)
     {
         return isset($this->drivers[$name]);
     }
 
-    public function __call($name, $args)
+    final public function __call($name, $args)
     {
         if ($this->hasDriver($name)) {
             array_unshift($args, $this);
@@ -32,22 +25,22 @@ class Prototype implements \ArrayAccess
         throw new \BadMethodCallException("沒有安裝[{$name}]處理驅動");
     }
 
-    public function offsetExists($key)
+    final public function offsetExists($key)
     {
         return isset($this->drivers[$key]);
     }
 
-    public function offsetGet($key)
+    final public function offsetGet($key)
     {
         return $this->drivers[$key];
     }
 
-    public function offsetSet($key, $val)
+    final public function offsetSet($key, $val)
     {
         $this->extend($key, $val);
     }
 
-    public function offsetUnset($key)
+    final public function offsetUnset($key)
     {
         unset($this->drivers[$key]);
     }
