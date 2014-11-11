@@ -70,4 +70,38 @@ class PrototypeTest extends PHPUnit_Framework_TestCase
 
         $o->getColde();
     }
+
+    public function testEventWeight()
+    {
+        $tester = $this;
+        $o = new Rde\Prototype();
+        $event_cnt = 0;
+
+        // 期望順序: 2
+        $o->on('test.before', function($carry) use($tester, &$event_cnt){
+                ++$event_cnt;
+                $tester->assertEquals(3, $carry, '檢查事件呼叫順序');
+                return 7;
+            }, 7);
+
+        // 期望順序: 3
+        $o->on('test.before', function($carry) use($tester, &$event_cnt){
+                ++$event_cnt;
+                $tester->assertEquals(7, $carry, '檢查事件呼叫順序');
+                return 13;
+            }, 7);
+
+        // 期望順序: 1
+        $o->on('test.before', function($carry) use($tester, &$event_cnt){
+                ++$event_cnt;
+                $tester->assertEquals(array(99), $carry, '檢查參數傳遞');
+                return 3;
+            }, 9);
+
+        $o->extend('test', function($self, $arg){});
+
+        $o->test(99);
+
+        $this->assertEquals(3, $event_cnt, '檢查事件是否全執行');
+    }
 }
