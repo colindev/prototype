@@ -78,24 +78,23 @@ class PrototypeTest extends PHPUnit_Framework_TestCase
         $event_cnt = 0;
 
         // 期望順序: 2
-        $o->on('test.before', function($carry) use($tester, &$event_cnt){
+        $o->on('test.before', function($payload) use($tester, &$event_cnt){
                 ++$event_cnt;
-                $tester->assertEquals(3, $carry, '檢查事件呼叫順序');
+                $tester->assertEquals(array(99), $payload, '檢查參數傳遞');
+                $tester->assertEquals(2, $event_cnt, '檢查呼叫順序');
                 return 7;
             }, 7);
 
         // 期望順序: 3
-        $o->on('test.before', function($carry) use($tester, &$event_cnt){
+        $o->on('test.before', function($payload) use($tester, &$event_cnt){
                 ++$event_cnt;
-                $tester->assertEquals(7, $carry, '檢查事件呼叫順序');
-                return 13;
+                $tester->assertEquals(3, $event_cnt, '檢查呼叫順序');
             }, 7);
 
         // 期望順序: 1
-        $o->on('test.before', function($carry) use($tester, &$event_cnt){
+        $o->on('test.before', function($payload) use($tester, &$event_cnt){
                 ++$event_cnt;
-                $tester->assertEquals(array(99), $carry, '檢查參數傳遞');
-                return 3;
+                $tester->assertEquals(1, $event_cnt, '檢查呼叫順序');
             }, 9);
 
         $o->extend('test', function($self, $arg){});

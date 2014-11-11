@@ -30,13 +30,13 @@ class Prototype implements \ArrayAccess
             array();
     }
 
-    private function fireEvent($name, $timing, $carry = null)
+    private function fireEvent($name, $timing, $payload = array())
     {
         $events_list = $this->fetchEvent($name, $timing);
         ! empty($events_list) and krsort($events_list);
         foreach ($events_list as $events) {
             foreach ($events as $event) {
-                if (false === ($carry = $event($carry))) {
+                if (false === $event($payload)) {
                     return;
                 }
             }
