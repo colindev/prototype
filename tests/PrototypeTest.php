@@ -70,4 +70,18 @@ class PrototypeTest extends PHPUnit_Framework_TestCase
 
         $o->getColde();
     }
+
+    public function testToString()
+    {
+        $o = new Rde\Prototype();
+
+        $this->assertEquals('['.get_class($o).']', (string) $o, '檢查預設轉型(string)');
+
+        $str = 'hello world';
+        $o->extend('__toString', function() use($str){
+            return $str;
+        });
+
+        $this->assertEquals($str, (string) $o, '檢查自訂轉型(string)');
+    }
 }

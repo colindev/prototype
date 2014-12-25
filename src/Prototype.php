@@ -25,6 +25,15 @@ class Prototype implements \ArrayAccess
         throw new \BadMethodCallException("沒有安裝[{$name}]處理驅動");
     }
 
+    public function __toString()
+    {
+        if ($this->hasDriver('__toString')) {
+            return $this->__call('__toString', array());
+        }
+
+        return '['.get_called_class().']';
+    }
+
     final public function offsetExists($key)
     {
         return isset($this->drivers[$key]);
