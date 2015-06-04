@@ -7,3 +7,4 @@
 [![Total Downloads](https://poser.pugx.org/rde/prototype/downloads.svg)](https://packagist.org/packages/rde/prototype) 
 [![Latest Unstable Version](https://poser.pugx.org/rde/prototype/v/unstable.svg)](https://packagist.org/packages/rde/prototype) 
 [![License](https://poser.pugx.org/rde/prototype/license.svg)](https://packagist.org/packages/rde/prototype)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4587959b-57c6-4bfb-9d56-91b56cee722b/mini.png)](https://insight.sensiolabs.com/projects/4587959b-57c6-4bfb-9d56-91b56cee722b)
