@@ -7,6 +7,8 @@ class Prototype implements \ArrayAccess
     final public function extend($name, $callable)
     {
         $this->drivers[$name] = $callable;
+
+        return $this;
     }
 
     final public function hasDriver($name)

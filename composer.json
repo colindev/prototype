@@ -1,5 +1,6 @@
 {
     "name": "rde/prototype",
+    "description": "原型物件",
     "authors": [
         {
             "name": "Colin",
@@ -7,12 +8,11 @@
         }
     ],
     "license": "MIT",
-    "minimum-stability": "dev",
     "require": {
-        "rde/common": "dev-0.x-master"
+        "rde/common": "0.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4"
+        "phpunit/phpunit": "4.*"
     },
     "autoload": {
         "psr-4": {
@@ -22,5 +22,6 @@
     "config": {
         "preferred-install": "dist"
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }

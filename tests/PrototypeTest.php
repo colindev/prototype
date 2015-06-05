@@ -26,9 +26,11 @@ class PrototypeTest extends PHPUnit_Framework_TestCase
             $o->sayHello(),
             '檢查建構注入');
 
-        $o->extend('sayHello', function($o, $name){
+        $ret = $o->extend('sayHello', function($o, $name){
                 return "hello {$name}";
             });
+
+        $this->assertEquals($o, $ret, '檢查物件方法鍊');
 
         $this->assertEquals(
             'hello abc',
