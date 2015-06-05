@@ -103,4 +103,19 @@ class PrototypeTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(3, $event_cnt, '檢查事件是否全執行');
     }
+
+    public function testToString()
+    {
+        $o = new Rde\Prototype();
+
+        $this->assertEquals('['.get_class($o).']', (string) $o, '檢查預設轉型(string)');
+
+        $str = 'hello world';
+        $o->extend('__toString', function() use($str){
+            return $str;
+        });
+
+        $this->assertEquals($str, (string) $o, '檢查自訂轉型(string)');
+
+    }
 }
