@@ -1,6 +1,6 @@
 # 原型物件
 
-[![Build Status](https://travis-ci.org/colin1124x/prototype.svg)](https://travis-ci.org/colin1124x/prototype)
+[![Build Status](https://travis-ci.org/colindev/prototype.svg)](https://travis-ci.org/colindev/prototype)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/colin1124x/prototype/badges/quality-score.png)](https://scrutinizer-ci.com/g/colin1124x/prototype)
 [![Code Coverage](https://scrutinizer-ci.com/g/colin1124x/prototype/badges/coverage.png)](https://scrutinizer-ci.com/g/colin1124x/prototype)
 [![Latest Stable Version](https://poser.pugx.org/rde/prototype/v/stable.svg)](https://packagist.org/packages/rde/prototype) 
